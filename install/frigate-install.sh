@@ -116,6 +116,7 @@ if grep -q -o -m1 -E 'avx[^ ]*' /proc/cpuinfo; then
   cp -r /opt/frigate/models/public/ssdlite_mobilenet_v2 openvino-model
   curl -fsSL "https://github.com/openvinotoolkit/open_model_zoo/raw/master/data/dataset_classes/coco_91cl_bkgr.txt" -o "openvino-model/coco_91cl_bkgr.txt"
   sed -i 's/truck/car/g' openvino-model/coco_91cl_bkgr.txt
+  cp /openvino-model/FP16/* /openvino-model/
   cat <<EOF >>/config/config.yml
 detectors:
   ov:
